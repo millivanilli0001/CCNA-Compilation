@@ -1,0 +1,111 @@
+!!Template_CoreSW"
+config t
+vlan 25
+ name ACCENTURE.com
+ exit
+Int vlan 25
+ no shut
+ ip add 10.0.16.1 255.255.248.0
+ ip dhcp excluded-add 10.0.16.1 10.0.16.50
+ ip dhcp pool ACCENTURE.com
+ network 10.0.16.0 255.255.248.0
+ default-router 10.0.16.1
+ domain-name ACCENTURE.com
+ dns-server 10.41.1.10
+ option 150 ip 10.41.100.8
+ Int Fa 0/5
+ swi acc vlan 25
+end
+
+Ex.5.3:
+
+!!Template_CoreSW"
+config t
+vlan 25
+ name SYKESASIA.com
+ exit
+Int vlan 25
+ no shut
+ ip add 10.0.2.1 255.255.254.0
+ ip dhcp excluded-add 10.0.2.1 10.0.2.50
+ ip dhcp pool SYKESASIA.com
+ network 10.0.2.0 255.255.254.0
+ default-router 10.0.2.1
+ domain-name SYKESASIA.com
+ dns-server 10.41.1.10
+ option 150 ip 10.41.100.8
+Int Fa 0/7
+ swi acc vlan 100
+ Int Fa 0/5
+ swi acc vlan 25
+end
+ do sh ip dhcp binding
+
+Ex5.4 
+
+!!Template_CoreSW"
+config t
+vlan 25
+ name ETELECARE.com
+ exit
+Int vlan 25
+ no shut
+ ip add 10.0.32.1 255.255.224.0
+ ip dhcp excluded-add 10.0.32.1 10.0.32.50
+ ip dhcp pool ETELECARE.com
+ network 10.0.32.0 255.255.224.0
+ default-router 10.0.32.1
+ domain-name ETELECARE.com
+ dns-server 10.41.1.10
+ option 150 ip 10.41.100.8
+Int Fa 0/7
+ swi acc vlan 100
+ Int Fa 0/5
+ swi acc vlan 25
+end
+ do sh ip dhcp binding
+
+Ex5.4 
+
+!!Templatte_CoreSW"
+config t
+vlan 25
+ name nbi.gov.ph
+ exit
+Int vlan 25
+ no shut
+ ip add 10.0.1.1 255.255.255.0
+ ip dhcp excluded-add 10.0.1.1 10.0.1.50
+ ip dhcp pool nbi.gov.ph
+ network 10.0.1.0 255.255.255.0
+ default-router 10.0.1.1
+ domain-name nbi.gov.ph
+ dns-server 10.41.1.10
+ option 150 ip 10.41.100.8
+Int Fa 0/7
+ swi acc vlan 100
+ Int Fa 0/5
+ swi acc vlan 25
+end
+ do sh ip dhcp binding
+
+Ex 5.4 58 agents
+config t
+vlan 25
+ name doh.gov.ph
+ exit
+Int vlan 25
+ no shut
+ ip add 10.0.0.65 255.255.255.192
+ ip dhcp excluded-add 10.0.0.65 10.0.0.70
+ ip dhcp pool doh.gov.ph
+ network 10.0.0.64 255.255.255.192
+ default-router 10.0.0.65
+ domain-name doh.gov.ph
+ dns-server 10.41.1.10
+ option 150 ip 10.41.100.8
+Int Fa 0/7
+ swi acc vlan 100
+ Int Fa 0/5
+ swi acc vlan 25
+end
